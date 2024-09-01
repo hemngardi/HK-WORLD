@@ -1,4 +1,4 @@
-
+<script>
 const { Octokit } = require('@octokit/octokit');
 const { GitHubAuth } = require('github-auth');
 
@@ -40,3 +40,4 @@ auth.login()
   .catch((error) => {
     console.error('Error logging in using GitHubAuth:', error);
   });
+</script>
