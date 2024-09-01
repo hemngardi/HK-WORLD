@@ -223,6 +223,82 @@ function showSlides(n) {
     }
     slides[slideIndex - 1].style.display = "block";
 }
+    from flask import Flask, redirect, request, session, url_for
+import requests
+import os
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Replace with a random secret key
+
+# GitHub OAuth configuration
+CLIENT_ID = 'your_client_id'  # Replace with your GitHub OAuth app client ID
+CLIENT_SECRET = 'your_client_secret'  # Replace with your GitHub OAuth app client secret
+AUTHORIZE_URL = 'https://github.com/login/oauth/authorize'
+TOKEN_URL = 'https://github.com/login/oauth/access_token'
+USER_API_URL = 'https://api.github.com/user'
+
+@app.route('/')
+def home():
+    return '<a href="/login">Log in with GitHub</a>'
+
+@app.route('/login')
+def login():
+    return redirect(f'{AUTHORIZE_URL}?client_id={CLIENT_ID}&scope=user')
+
+@app.route('/callback')
+def callback():
+    code = request.args.get('code')
+    if code is None:
+        return 'Error: No code provided'
+
+    # Exchange code for access token
+    token_response = requests.post(
+        TOKEN_URL,
+        headers={'Accept': 'application/json'},
+        data={
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SECRET,
+            'code': code
+        }
+    )
+    token_json = token_response.json()
+    access_token = token_json.get('access_token')
+
+    if access_token is None:
+        return 'Error: No access token received'
+
+    # Use access token to get user info
+    user_response = requests.get(
+        USER_API_URL,
+        headers={'Authorization': f'token {access_token}'}
+    )
+    user_json = user_response.json()
+
+    # Store user info in session
+    session['user'] = user_json
+
+    return redirect(url_for('profile'))
+
+@app.route('/profile')
+def profile():
+    user = session.get('user')
+    if user is None:
+        return redirect(url_for('home'))
+
+    return f"""
+    <h1>{user['login']}</h1>
+    <img src="{user['avatar_url']}" alt="Avatar" width="100">
+    <p><a href="{user['html_url']}">GitHub Profile</a></p>
+    <a href="/logout">Log out</a>
+    """
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('home'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
 </script>
 
 </body>
