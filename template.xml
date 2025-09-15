@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <title><data:blog.title/></title>
+    <b:skin><![CDATA[
+    /*
+    * -----------------------------------------------
+    * Blogger Template
+    * -----------------------------------------------
+    */
+    
+    /* Variable definitions
+    =======================
+    */
+    
+    body {
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+    
+    .header {
+      padding: 20px 0;
+      background: linear-gradient(45deg, #1a1a1a, #000);
+      text-align: center;
+      border-bottom: 3px solid #333;
+    }
+    
+    .post {
+      margin-bottom: 30px;
+      background: rgba(26, 26, 26, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      background: linear-gradient(45deg, #000, #1a1a1a);
+      border-top: 3px solid #333;
+      margin-top: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin: 0;
+    }
+
+    a {
+      color: #4a9eff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #66b3ff;
+    }
+    ]]></b:skin>
+
+    <b:template-skin>
+      <![CDATA[
+        .post-body img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+      ]]>
+    </b:template-skin>
+</head>
+
+<body>
+  <div class='container'>
+    <!-- Header -->
+    <header class='header'>
+      <b:section id='header'>
+        <b:widget id='Header1' locked='true' title='Blog Title' type='Header' version='2'>
+          <b:widget-settings>
+            <b:widget-setting name='displayUrl'/>
+            <b:widget-setting name='displayHeight'>0</b:widget-setting>
+            <b:widget-setting name='sectionWidth'>-1</b:widget-setting>
+            <b:widget-setting name='useImage'>false</b:widget-setting>
+            <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+            <b:widget-setting name='imagePlacement'>BEHIND</b:widget-setting>
+            <b:widget-setting name='displayWidth'>0</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main' var='this'>
+            <h1><data:title/></h1>
+            <b:include name='description'/>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </header>
+
+    <!-- Main Content -->
+    <main class='main'>
+      <b:section class='main' id='main'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
+          <b:widget-settings>
+            <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+            <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+            <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showAuthor'>true</b:widget-setting>
+            <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showLabels'>true</b:widget-setting>
+            <b:widget-setting name='showLocation'>false</b:widget-setting>
+            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+            <b:widget-setting name='showBacklinks'>true</b:widget-setting>
+            <b:widget-setting name='style.bgcolor'>#000000</b:widget-setting>
+            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+    </main>
+
+    <!-- Footer -->
+    <footer class='footer'>
+      <p>Copyright © <data:blog.title/> <script>document.write(new Date().getFullYear())</script></p>
+    </footer>
+  </div>
+</body>
+</html>
